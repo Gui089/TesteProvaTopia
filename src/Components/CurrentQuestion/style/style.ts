@@ -12,3 +12,18 @@ export const ContainerQuestion = styled.div`
 export const TextQuestion = styled.h1`
    font-size: 16px;
 `;
+
+export const AlternativesButton = styled.button`
+   width: 50px;
+   margin-top: 10px;
+`;
+
+export const ListQuestion = styled.li`
+   display: flex;
+   gap: 10px;
+   align-items: center;
+`;
+
+export const TextAlternative = styled.p`
+   
+`;

@@ -1,4 +1,4 @@
-import { Container, ContainerQuestion, TextQuestion } from "./style/style";
+import { AlternativesButton, Container, ContainerQuestion, ListQuestion, TextQuestion } from "./style/style";
 
 interface QuestionsProps {
     title: string;
@@ -34,9 +34,16 @@ export const CurrentQuestion = ({
 
                 <ul>
                     {alternatives.map(item => 
-                    <li key={item.letter}>
-                        {item.letter}
-                    </li>)}
+                    <ListQuestion key={item.letter}>
+                        <AlternativesButton>
+                            {item.letter}
+                        </AlternativesButton>
+
+                        <p>{item.text}</p>
+                        
+                        {item.file && <img src={item.file} />}
+
+                    </ListQuestion>)}
 
                     <h1>{correctAlternative}</h1>
                 </ul>

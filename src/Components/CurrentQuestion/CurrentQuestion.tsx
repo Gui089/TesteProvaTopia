@@ -1,3 +1,4 @@
+import React from "react";
 import { AlternativesButton, Container, ContainerQuestion, ListQuestion, TextQuestion } from "./style/style";
 
 interface QuestionsProps {
@@ -8,6 +9,9 @@ interface QuestionsProps {
     files: string;
     correctAlternative: string;
     alternatives: any[];
+    alternativesIntroduction: string;
+    setScore: React.Dispatch<React.SetStateAction<number>>;
+    setCurrentQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const CurrentQuestion = ({
@@ -17,8 +21,27 @@ export const CurrentQuestion = ({
     context,
     files,
     correctAlternative,
-    alternatives
+    alternatives,
+    alternativesIntroduction,
+    setScore,
+    setCurrentQuestionIndex
 }: QuestionsProps) => {
+
+    const handleSelectQuestion = (e: React.MouseEvent<HTMLButtonElement>) => {
+        const alternativeSlected = e.currentTarget.value;
+
+        if(alternativeSlected == correctAlternative) {
+
+           console.log('Acertou');
+           setScore(prev => prev + 10);
+           setCurrentQuestionIndex(prev => prev + 1);
+
+        } else {
+            console.log('Errou');
+        }
+  
+    }
+
     return (
         <Container>
             <h1>{title}</h1> 
@@ -31,11 +54,16 @@ export const CurrentQuestion = ({
                 <TextQuestion>
                     {context}
                 </TextQuestion>
+                 
+                <TextQuestion>
+                    {alternativesIntroduction}
+                </TextQuestion>
+
 
                 <ul>
                     {alternatives.map(item => 
                     <ListQuestion key={item.letter}>
-                        <AlternativesButton>
+                        <AlternativesButton onClick={handleSelectQuestion} value={item.letter}>
                             {item.letter}
                         </AlternativesButton>
 
@@ -45,7 +73,6 @@ export const CurrentQuestion = ({
 
                     </ListQuestion>)}
 
-                    <h1>{correctAlternative}</h1>
                 </ul>
             </ContainerQuestion>
         </Container>

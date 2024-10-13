@@ -5,8 +5,9 @@ export const Container = styled.div`
 `;
 
 export const ContainerQuestion = styled.div`
-    width: 500px;
+    width: 525px;
     background-color: #212631;
+    padding: 10px;
 `;
 
 export const TextQuestion = styled.h1`
@@ -15,7 +16,7 @@ export const TextQuestion = styled.h1`
 
 export const AlternativesButton = styled.button`
    width: 50px;
-   margin-top: 10px;
+   margin-top: 20px;
 `;
 
 export const ListQuestion = styled.li`

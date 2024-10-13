@@ -34,7 +34,8 @@ export const HomePage = () => {
             console.error("Formato inesperado de dados", response.data);
         }
     };
-    
+
+
 
     return (
         <Container>
